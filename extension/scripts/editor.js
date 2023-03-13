@@ -546,7 +546,7 @@ function anyproxy(bindTo,action,name,extrargs,mutator,before,then,dontSend,dontD
             if(pauseEventHandling) {
                 return action.bind(bindTo)(...args)
             } else {
-            // console.log('intrecepted:')
+            // console.log('intercepted:')
             // console.log(...args)
             let extrargsObj = null;
             if(!!extrargs) {extrargsObj=extrargs(args)}
@@ -2959,6 +2959,7 @@ function injectChatCSS() {
 function addChat() {
 try{
     injectChatCSS()
+    Notification.requestPermission()
 
     let blChat = document.createElement('bl-chat')
     blChat.id = 'bl-chat'
@@ -3074,6 +3075,7 @@ async function addMessage(msg) {
     let msgElem = document.createElement('bl-msg')
     msgElem.innerText = msg.text 
     if(msg.sender == uname) {msgElem.classList.add('mymsg')}
+    else {var n = new Notification("New Blocklive Message", {icon: "/favicon.ico", body: `${msg.sender}: ${msg.text}`})}
     msgsElem.appendChild(msgElem)
 
     msgsElem.scrollTop = msgsElem.scrollHeight;
