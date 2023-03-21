@@ -311,7 +311,7 @@ setInterval(reconnectIfNeeded,1000)
         } else if(msg.meta == 'version++') {
             blVersion++;
         } else if(msg.meta == 'chat') {
-            addMessage(msg.msg)
+            addMessage(msg.msg, 1)
         }
         } catch (e) {console.error(e)}
     }
@@ -546,7 +546,7 @@ function anyproxy(bindTo,action,name,extrargs,mutator,before,then,dontSend,dontD
             if(pauseEventHandling) {
                 return action.bind(bindTo)(...args)
             } else {
-            // console.log('intrecepted:')
+            // console.log('intercepted:')
             // console.log(...args)
             let extrargsObj = null;
             if(!!extrargs) {extrargsObj=extrargs(args)}
@@ -2961,6 +2961,7 @@ function injectChatCSS() {
 function addChat() {
 try{
     injectChatCSS()
+    Notification.requestPermission()
 
     let blChat = document.createElement('bl-chat')
     blChat.id = 'bl-chat'
@@ -2985,7 +2986,7 @@ try{
         uname = username;
         fetch(apiUrl + '/chat/' + blId).then(async res=>{
             let chatHistory = await res.json()
-            chatHistory.forEach(msg=>addMessage(msg))
+            chatHistory.forEach(msg=>addMessage(msg, 0))
         })
     })
     backspaceFix()
@@ -3060,7 +3061,7 @@ function dragElement(elmnt) {
 // msg: {text, sender}
 lastSender = ''
 uname = ''
-async function addMessage(msg) {
+async function addMessage(msg, notif) {
     let msgsElem = document.querySelector('bl-chat-msgs')
     if(msg.sender != lastSender) {
         let unameElem = document.createElement('bl-msg-sender')
@@ -3076,6 +3077,7 @@ async function addMessage(msg) {
     let msgElem = document.createElement('bl-msg')
     msgElem.innerText = msg.text 
     if(msg.sender == uname) {msgElem.classList.add('mymsg')}
+    else if(notif) {var n = new Notification("New Blocklive Message", {icon: "/favicon.ico", body: `${msg.sender}: ${msg.text}`})}
     msgsElem.appendChild(msgElem)
 
     msgsElem.scrollTop = msgsElem.scrollHeight;
