@@ -1,3 +1,4 @@
+#!/bin/bash
 git checkout deploy
 git merge master
 git push
