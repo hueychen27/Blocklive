@@ -1,0 +1,17 @@
+{
+	"addons": {
+		"{a249acae-e515-4d59-87c3-16a09e63baf2}": {
+			"updates": [
+				{
+					"version": "0.2.1",
+					"update_link": "https://github.com/hueychen27/Blocklive-for-Firefox/raw/master/extension/web-ext-artifacts/Blocklive-for-Firefox-0.3.xpi",
+					"applications": {
+						"gecko": {
+							"strict_min_version": "121.0"
+						}
+					}
+				}
+			]
+		}
+	}
+}

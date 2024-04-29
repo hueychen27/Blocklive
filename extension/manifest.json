@@ -1,7 +1,7 @@
 {
 	"name": "Blocklive: Scratch Realtime Collaboration",
 	"description": "Multiple Scratchers Work together in Real Time on a Single Project",
-	"version": "0.2",
+	"version": "0.2.1",
 	"icons": {
 		"128": "icon128.png"
 	},
@@ -65,7 +65,9 @@
 	},
 	"browser_specific_settings": {
 		"gecko": {
-			"id": "{a249acae-e515-4d59-87c3-16a09e63baf2}"
+			"id": "{a249acae-e515-4d59-87c3-16a09e63baf2}",
+			"strict_min_version": "121.0",
+			"update_url": "https://raw.githubusercontent.com/hueychen27/Blocklive-for-Firefox/master/extension/updates.json"
 		}
 	}
 }
