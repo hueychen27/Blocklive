@@ -1,7 +1,7 @@
 {
     "name": "Blocklive: Scratch Realtime Collaboration",
     "description": "Multiple Scratchers Work together in Real Time on a Single Project",
-    "version": "0.1.10",
+    "version": "0.2",
     "icons": {
        "128": "icon128.png" 
     },
@@ -18,7 +18,7 @@
         }
     ],
     "background": {
-        "service_worker":"background.js"
+        "scripts":["background.js"]
     },
     "permissions": [
         "storage"
@@ -36,5 +36,10 @@
     },
     "action": {
         "default_popup": "popups/popup.html"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{a249acae-e515-4d59-87c3-16a09e63baf2}"
+        }
     }
 }
