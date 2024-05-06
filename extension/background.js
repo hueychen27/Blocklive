@@ -16,9 +16,13 @@ chrome.runtime.onInstalled.addListener((details) => {
 
 
 async function backgroundScript() {
-
-	importScripts('background/socket.io.js')
-	importScripts('background/blockliveProject.js')
+	if ('function' === typeof importScripts) { // Detect service worker
+		importScripts('background/socket.io.js')
+		importScripts('background/blockliveProject.js')
+	} else {
+		await import('./background/socket.io.js')
+		await import('./background/blockliveProject.js')
+	}
 
 	// user info
 	// let username = 'ilhp10'
@@ -61,6 +65,7 @@ async function backgroundScript() {
 			fetch(`${apiUrl}/linkScratch/${id}/${blId}/${uname}`, {
 				method: "PUT",
 			}) // link scratch project with api
+			console.log(tabCallbacks[tab.id])
 			tabCallbacks[tab.id]({ meta: 'initBlocklive', blId }); // init blocklive in project tab
 		}
 	}
@@ -378,20 +383,21 @@ async function backgroundScript() {
 			} else if (request.meta == 'getActive') {
 				sendResponse(await (await fetch(`${apiUrl}/active/${request.id}`)).json())
 			} else if (request.meta == 'getPingUrl') {
-				sendResponse(await chrome.runtime.getURL("sounds/ping.mp3"))
+				sendResponse(chrome.runtime.getURL("sounds/ping.mp3"))
 			} else if (request.meta == 'isPingEnabled') {
 				sendResponse((await chrome.storage.local.get(['ping'])).ping)
 			}
 		});
 
 
-	chrome.runtime.onMessage.addListener(async function (request, sender, sendResponse) {
+	chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 		if (request.meta == 'getUsername') {
 			sendResponse(uname)
 		} else if (request.meta == 'getUsernamePlus') {
 			sendResponse({ uname, signedin })
 			refreshUsername()
 		}
+		return true;
 	})
 }
 

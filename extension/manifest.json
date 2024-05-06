@@ -1,7 +1,7 @@
 {
 	"name": "Blocklive: Scratch Realtime Collaboration",
 	"description": "Multiple Scratchers Work together in Real Time on a Single Project",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"icons": {
 		"128": "icon128.png"
 	},
@@ -13,7 +13,7 @@
 			],
 			"css": [],
 			"js": [
-				"injectors/editor.js"
+				"scripts/editor.js"
 			]
 		},
 		{
@@ -22,7 +22,7 @@
 			],
 			"css": [],
 			"js": [
-				"injectors/mystuff.js"
+				"scripts/mystuff.js"
 			]
 		}
 	],

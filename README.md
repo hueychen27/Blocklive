@@ -20,3 +20,4 @@ in `manifest.json` to fix the `background.service_worker` not supported error. S
 # Version list
 - v0.2: Major fixes for layout design and total improvement of Blocklive support on Firefox.
 - v0.2.1: Updates link is added.
+- v0.2.2: Fix minor things but not yet fix all of the Javascript.

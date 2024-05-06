@@ -8,9 +8,9 @@ let srcThign = chrome.runtime.getURL("/scripts/editor.js");
 
 scriptElem.src = srcThign;
 // document.body.append(scriptElem)
-
+console.log(scriptElem)
 if (!!document.head) {
-  document.head.appendChild(scriptElem);
+	document.head.appendChild(scriptElem);
 } else {
-  document.documentElement.appendChild(scriptElem);
+	document.documentElement.appendChild(scriptElem);
 }

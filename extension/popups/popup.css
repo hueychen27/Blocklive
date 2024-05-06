@@ -1,6 +1,7 @@
 html {
 	width: 100%;
 	height: 100%;
+	box-sizing: border-box;
 }
 
 body {
@@ -264,4 +265,11 @@ br {
 	background-color: #ffe1ff;
 	transform: rotateX(calc(360deg));
 	/* flex-flow:row-reverse; */
+}
+
+#loggedout {
+	font-size: 30px;
+	width: 100%;
+	display: none;
+	color: red;
 }

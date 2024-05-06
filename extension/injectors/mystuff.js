@@ -8,8 +8,8 @@ let srcThign = chrome.runtime.getURL("/scripts/mystuff.js")
 scriptElem.src = srcThign
 // document.body.append(scriptElem)
 
-if(!!document.head) {
-    document.head.appendChild(scriptElem)
+if (!!document.head) {
+	document.head.appendChild(scriptElem)
 } else {
-    document.documentElement.appendChild(scriptElem)
+	document.documentElement.appendChild(scriptElem)
 }
